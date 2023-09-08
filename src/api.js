@@ -31,6 +31,9 @@ const post = async (context, url, body) => {
 
     const isOk = response.status == 200;
     if (!isOk) console.error(`net err: ${response.status}`);
+    if (response.data?.context?.error_id != null) {
+        assert(false, `responce err, id: ${response.data.context.error_id}, msg: ${response.data.context.msg}`);
+    }
     // console.log(`login response code: ${response.status}, isOk: ${isOk}.`);
     return response;
 }

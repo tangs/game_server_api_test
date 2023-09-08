@@ -5,7 +5,7 @@ const assert = require('assert');
 
 const test = async (gameId, betMoney, gameLevelId, moneyType, freeTypeStart, freeTypeEnd, specialTypeIndex, loopTimes) => {
     console.log(`run test: gameId: ${gameId}, betMoney: ${betMoney}, gameLevelId: ${gameLevelId}, moneyType: ${moneyType}`);
-    const context = api.createContext('https://', 'api.h5navi.com:4433', gameId, '123123', '123123');
+    const context = api.createContext('https://', 'api.h5navi.com:4433', gameId, 'a123123', '123123');
     const loginRet = await api.login(context);
     assert(loginRet, "login fail.");
     
@@ -22,7 +22,8 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, freeTypeStart, fre
         console.log(`normalSpin: ${i}`);
         const ret = await api.normalSpin(context, betMoney, gameLevelId, moneyType);
         const isFreeGame = ret.context.is_free_game;
-        console.log(`is free game: ${isFreeGame}`);
+        console.log(`is free game: ${isFreeGame}, betMoney: ${betMoney}, gameLevelId: ${gameLevelId}.`);
+        assert(typeof isFreeGame == 'boolean', "");
         
         if (isFreeGame) {
             console.log(`freeType: ${freeType}`);
