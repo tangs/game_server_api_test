@@ -35,8 +35,10 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, freeTypeStart, fre
                 const ret = await api.specialSpin(context);
                 const current = ret.context.current_count;
                 const total = ret.context.total_count;
+
                 console.log(`c: ${current}, t: ${total}`);
                 assert(current != null, '');
+
                 if (current >= total) break;
             }
         } else {
@@ -44,8 +46,10 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, freeTypeStart, fre
                 const ret = await api.freeSpin(context);
                 const current = ret.context.current_count;
                 const total = ret.context.total_count;
+
                 console.log(`c: ${current}, t: ${total}`);
                 assert(current != null, '');
+
                 if (current >= total) break;
             }
         }

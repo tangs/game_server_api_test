@@ -16,7 +16,6 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, loopTimes) => {
     const sitRet = await api.randomPlayerSit(context);
     assert(sitRet == true, 'sit fail.');
 
-
     for (let i = 0; i < loopTimes; i++) {
         console.log(`normalSpin: ${i}`);
         const ret = await api.normalSpin(context, betMoney, gameLevelId, moneyType);
@@ -25,13 +24,15 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, loopTimes) => {
         assert(typeof isFreeGame == 'boolean', "");
         
         if (!isFreeGame) continue;
-        
+
         while (true) {
             const ret = await api.freeSpin(context);
             const current = ret.context.current_count;
             const total = ret.context.total_count;
+            
             console.log(`c: ${current}, t: ${total}`);
             assert(current != null, '');
+
             if (current >= total) break;
         }
     }
