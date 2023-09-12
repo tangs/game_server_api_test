@@ -24,15 +24,15 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, loopTimes) => {
         console.log(`is free game: ${isFreeGame}, betMoney: ${betMoney}, gameLevelId: ${gameLevelId}.`);
         assert(typeof isFreeGame == 'boolean', "");
         
-        if (isFreeGame) {
-            while (true) {
-                const ret = await api.freeSpin(context);
-                const current = ret.context.current_count;
-                const total = ret.context.total_count;
-                console.log(`c: ${current}, t: ${total}`);
-                assert(current != null, '');
-                if (current >= total) break;
-            }
+        if (!isFreeGame) continue;
+        
+        while (true) {
+            const ret = await api.freeSpin(context);
+            const current = ret.context.current_count;
+            const total = ret.context.total_count;
+            console.log(`c: ${current}, t: ${total}`);
+            assert(current != null, '');
+            if (current >= total) break;
         }
     }
 }
