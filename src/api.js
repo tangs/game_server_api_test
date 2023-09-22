@@ -76,7 +76,7 @@ const randomPlayerSit = async (context) => {
 
 const postFunc = async (context, funcName, funcContext) => {
     const { schema, address, gameId, token } = context;
-    const url = `${schema}${addrres}/func/${gameId}/${token}`;
+    const url = `${schema}${address}/func/${gameId}/${token}`;
     const body = {
         func: funcName,
         context: funcContext,
