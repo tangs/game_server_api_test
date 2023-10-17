@@ -113,6 +113,7 @@ const freeSpin = async (context) => {
 }
 
 exports.createContext = createContext
+exports.postFunc = postFunc
 exports.login = login
 exports.createGameToken = createGameToken
 exports.randomPlayerSit = randomPlayerSit
