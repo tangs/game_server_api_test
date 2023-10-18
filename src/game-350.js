@@ -15,10 +15,10 @@ const main = async () => {
     const gameId = 350;
     const testTimesPerCell = 100;
     const configs = await api.loadConfigs(connection, gameId);
-    const startTime = Date.now()
+    const startTime = Date.now();
     
     for (const row of configs) {
-        const {level_id, bet_money} = row
+        const {level_id, bet_money} = row;
         console.log(`test level id: ${level_id}, bet money: ${bet_money}`);
         await test.test(gameId, bet_money, level_id, 0, testTimesPerCell);
     }
