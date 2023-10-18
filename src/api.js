@@ -112,6 +112,31 @@ const freeSpin = async (context) => {
     return await postFunc(context, 'FreeSpin', funcContext);
 }
 
+const loadConfigs = (connection, gameId) => {
+    return new Promise((resolve, reject) => {
+        connection.connect();
+        var  sql = `SELECT * FROM slots_bet_ratios WHERE game_id=${gameId}`;
+        connection.query(sql, function async (err, result) {
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+                reject(err);
+                return;
+            }
+        
+            console.log('--------------------------SELECT----------------------------');
+            // console.log(result);
+            for (const row of result) {
+                const {level_id, bet_money} = row
+                console.log(`level id: ${level_id}, bet money: ${bet_money}`);
+            }
+            console.log('------------------------------------------------------------\n\n');
+            connection.end();
+            resolve(result);
+        });
+        
+    });
+}
+
 exports.createContext = createContext
 exports.postFunc = postFunc
 exports.login = login
@@ -121,3 +146,4 @@ exports.freeSpinType = freeSpinType
 exports.normalSpin = normalSpin
 exports.specialSpin = specialSpin
 exports.freeSpin = freeSpin
+exports.loadConfigs = loadConfigs
