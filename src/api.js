@@ -112,6 +112,13 @@ const freeSpin = async (context) => {
     return await postFunc(context, 'FreeSpin', funcContext);
 }
 
+const collectClick = async (context, index) => {
+    const funcContext = {
+        index: index,
+    };
+    return await postFunc(context, 'CollectClick', funcContext);
+}
+
 const loadConfigs = (connection, gameId) => {
     return new Promise((resolve, reject) => {
         connection.connect();
@@ -146,4 +153,5 @@ exports.freeSpinType = freeSpinType
 exports.normalSpin = normalSpin
 exports.specialSpin = specialSpin
 exports.freeSpin = freeSpin
+exports.collectClick = collectClick
 exports.loadConfigs = loadConfigs
