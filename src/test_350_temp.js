@@ -47,7 +47,7 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, loopTimes) => {
         
         if (!isFreeGame) continue;
 
-        const freeType = Math.floor(Math.random() * 3);
+        const freeType = Math.floor(Math.random() * 3) + 1;
         console.log(`free type: ${freeType}`);
         await freeSpinType(context, freeType)
         
