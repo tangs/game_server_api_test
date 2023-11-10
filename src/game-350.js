@@ -4,12 +4,12 @@ const mysql = require('mysql');
 const api = require('./api');
 
 const connection = mysql.createConnection({     
-    host     : '192.168.1.211',       
-    user     : 'root',              
-    password : 'a123123',       
-    port: '3306',                   
-    database: 'ns_games' 
-}); 
+    host     : '192.168.1.211',
+    user     : 'root',
+    password : 'a123123',
+    port: '3306',
+    database: 'ns_games',
+});
 
 const main = async () => {
     const gameId = 350;
