@@ -5,7 +5,8 @@ const assert = require('assert');
 
 const test = async (gameId, betMoney, gameLevelId, moneyType, loopTimes) => {
     console.log(`run test: gameId: ${gameId}, betMoney: ${betMoney}, gameLevelId: ${gameLevelId}, moneyType: ${moneyType}`);
-    const context = api.createContext('https://', 'api.h5navi.com:4433', gameId, 'a123123', '123123');
+    // const context = api.createContext('https://', 'api.h5navi.com:4433', gameId, 'a123123', '123123');
+    const context = api.createContext('https://', 'api.eternal.bet:4433', gameId, 'a123123', '123123');
     // const context = api.createContext('http://', '127.0.0.1:80', gameId, 'a123123', '123123');
     const loginRet = await api.login(context);
     assert(loginRet, "login fail.");
