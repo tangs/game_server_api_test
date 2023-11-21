@@ -47,6 +47,9 @@ const test = async (gameId, betMoney, gameLevelId, moneyType, freeTypeStart, fre
         if (needSelectFreeGameType) {
             console.log(`freeType: ${freeType}`);
             const setFreeSpinTypeRet = await api.freeSpinType(context, freeType);
+            if (++freeType > freeTypeEnd) {
+                freeType = freeTypeStart;
+            }
         }
 
         // free game spin.
