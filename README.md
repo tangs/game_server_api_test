@@ -1,2 +1,3 @@
-# game_server_api_test
-game server test
+# game server api test framework with nodejs
+## run test
+node src/game-xxx.js.
